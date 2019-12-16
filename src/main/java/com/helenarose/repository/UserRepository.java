@@ -4,6 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.helenarose.model.Users;
 
-public interface UserRepository extends JpaRepository<Users, Long > {	
+public interface UserRepository extends JpaRepository<Users, Long > {
+
+	Users findByFnameAndLname(String fName, String lname);	 
 
 }

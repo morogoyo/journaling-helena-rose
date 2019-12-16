@@ -31,10 +31,10 @@ public class Users {
 	private Long userId;
 	
 	@Column(name = "fname")
-	private String fName;
+	private String fname;
 	
 	@Column(name = "lname")
-	private String lName;
+	private String lname;
 	
 	@Column(name = "userName")
 	private String userName;
