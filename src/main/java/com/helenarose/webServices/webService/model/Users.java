@@ -1,4 +1,4 @@
-package com.helenarose.model;
+package com.helenarose.webServices.webService.model;
 
 import java.util.Date;
 
