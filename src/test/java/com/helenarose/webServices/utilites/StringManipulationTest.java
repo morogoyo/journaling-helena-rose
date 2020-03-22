@@ -40,7 +40,7 @@ class StringManipulationTest {
 	void testingGenericMethod() throws JsonProcessingException {
 
 		String test1 = user.getFname() != null ? "Ilene" : "null";
-		LOOGER.info(test1.toString());
+		LOOGER.info(test1);
 		Object test = StringManipulation.lowerCase(user);
 		LOOGER.info(test.toString());
 		Assert.assertEquals("Ilene", test1);

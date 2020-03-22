@@ -24,7 +24,7 @@ public class MessageControllers {
 
     @PostMapping(value = "/insert")
     public ResponseEntity<?> insertMessage(@NotNull @RequestBody Message message){
-        LOG.info("This is the message = {}",message.toString());
+        LOG.info("This is the message = {}", message.toString());
         messageRepo.save(message);
         return new ResponseEntity<Message>(HttpStatus.OK);
 
