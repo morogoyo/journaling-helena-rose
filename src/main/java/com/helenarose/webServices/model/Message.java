@@ -35,5 +35,6 @@ public class Message {
     private Date modifiedDate;
 
     @ManyToOne
+    @JoinColumn(name = "userId")
     private  Users user;
 }

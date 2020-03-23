@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 @Qualifier("inDatabase")
@@ -26,16 +27,16 @@ public class JwtInDataBaseUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        UserDTO user = userDaoRepo.findByUserName(username);
-        LOG.info("user Credentials username:{}" , user.getUserName() == null ? null : user.getUserName());
-        LOG.info("user Credentials password:{}" , user.getPassword() == null ? null : user.getPassword());
+        Optional<UserDTO> user = Optional.of(userDaoRepo.findByUserName(username));
+        LOG.info("user Credentials username:{}" , user.get().getUserName() == null ? null : user.get().getUserName());
+        LOG.info("user Credentials password:{}" , user.get().getPassword() == null ? null : user.get().getPassword());
 
 
-        if (user == null){
+        if (!user.isPresent()){
             throw new UsernameNotFoundException("User not found for username "+ username);
         }
 
-        JwtUserDetails jwtUser = new JwtUserDetails(user.getId(),user.getUserName(),user.getPassword(),user.getRole());
+        JwtUserDetails jwtUser = new JwtUserDetails(user.get().getId(),user.get().getUserName(),user.get().getPassword(),user.get().getRole());
 
         
 
