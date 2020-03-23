@@ -1,33 +1,24 @@
-package com.helenarose.controllers;
+package com.helenarose.webServices.controllers;
 
 
-import java.util.List;
-
+import com.helenarose.webServices.model.Users;
+import com.helenarose.webServices.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.HttpStatusCodeException;
+import org.springframework.web.bind.annotation.*;
 
-import com.helenarose.model.Users;
-import com.helenarose.repository.UserRepository;
-import com.sun.xml.bind.v2.TODO;
-
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 
 @RestController
 @RequestMapping(value = "/api/v1/user")
-public class UserController {
+public class UserControllers {
 	
-	private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
+	private static final Logger LOG = LoggerFactory.getLogger(UserControllers.class);
 	
 	
 	@Autowired
@@ -53,9 +44,10 @@ public class UserController {
 	
 	
 	@PostMapping(value = "/insert", consumes = "application/json")
-	public ResponseEntity<?> insertUser(@RequestBody Users user) {
+	public ResponseEntity<?> insertUser(@NotNull @RequestBody Users user) {
 		LOG.info(user.toString());
 		userRepo.save(user);
+
 		return new ResponseEntity<Users>(HttpStatus.OK) {
 		};
 	}

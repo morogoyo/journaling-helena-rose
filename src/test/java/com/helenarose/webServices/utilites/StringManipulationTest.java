@@ -1,5 +1,6 @@
-package com.helenarose.utilites;
+package com.helenarose.webServices.utilites;
 
+import com.helenarose.webServices.model.Users;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.helenarose.model.Users;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -40,7 +40,7 @@ class StringManipulationTest {
 	void testingGenericMethod() throws JsonProcessingException {
 
 		String test1 = user.getFname() != null ? "Ilene" : "null";
-		LOOGER.info(test1.toString());
+		LOOGER.info(test1);
 		Object test = StringManipulation.lowerCase(user);
 		LOOGER.info(test.toString());
 		Assert.assertEquals("Ilene", test1);

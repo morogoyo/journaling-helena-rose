@@ -1,4 +1,4 @@
-package com.helenarose;
+package com.helenarose.webServices;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

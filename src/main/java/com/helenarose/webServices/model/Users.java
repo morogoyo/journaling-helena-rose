@@ -1,21 +1,11 @@
-package com.helenarose.model;
+package com.helenarose.webServices.model;
 
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import javax.persistence.*;
+import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -36,7 +26,7 @@ public class Users {
 	@Column(name = "lname")
 	private String lname;
 	
-	@Column(name = "userName")
+	@Column(name = "username")
 	private String userName;
 	
 	@Column(name = "email")
