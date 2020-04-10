@@ -1,6 +1,7 @@
 package com.helenarose.webServices.controllers;
 
 import com.helenarose.webServices.model.Message;
+import com.helenarose.webServices.model.Users;
 import com.helenarose.webServices.repository.MessageRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 
 @RestController
@@ -30,11 +32,19 @@ public class MessageControllers {
 
     }
 
-    @GetMapping(value = "/get-message")
-    public ResponseEntity<?> getMessage(@NotNull @RequestBody Message message){
-        LOG.info("This is the message = {}",message.toString());
-        Message userMessage = messageRepo.getOne(message.getUser().getUserId());
-        return new ResponseEntity<Message>(userMessage, HttpStatus.OK);
+    @GetMapping(value = "/get-messages")
+    public ResponseEntity<?> getMessage(){
+        List<Message> allMessages = messageRepo.findAll();
+        return new ResponseEntity<List<Message>>(allMessages, HttpStatus.OK);
+
+    }
+
+    @PutMapping(value = "/edit-message")
+    public ResponseEntity<?> findbyEmail(Users email){
+
+//        messageRepo.findByEmail(email);
+
+        return new ResponseEntity<>(HttpStatus.OK);
 
     }
 

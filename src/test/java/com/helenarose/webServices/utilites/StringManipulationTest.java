@@ -26,8 +26,6 @@ class StringManipulationTest {
 
 		user.setFname("Ilene");
 		user.setLname("Torres");
-		user.setUserName("Ily");
-		user.setPassword("123123");
 		user.setGender("f");
 		user.setStreetAddress("807 Sterling Spring Rd");
 		user.setState("Florida");

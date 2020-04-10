@@ -5,7 +5,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,8 +19,8 @@ public class Users {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "userId")
-	private Long userId;
+	@Column(name = "id")
+	private Long id;
 	
 	@Column(name = "fname")
 	private String fname;
@@ -26,15 +28,9 @@ public class Users {
 	@Column(name = "lname")
 	private String lname;
 	
-	@Column(name = "username")
-	private String userName;
-	
 	@Column(name = "email")
 	private String email;
-	
-	@Column(name = "password")
-	private String password;
-	
+
 	@CreationTimestamp
 	@Column(name = "createdDate")
 	private Date createdDate;
@@ -54,12 +50,16 @@ public class Users {
 	
 	@Column (name = "zipcode")
 	private int zipcode;
-	
+
+	@Temporal(TemporalType.DATE)
 	@Column(name = "dateOfBirth")
-	private String dateOfBirth;
+	private Date dateOfBirth;
 	
 	@Column(name = "gender")
-	private String gender;	
-	
+	private String gender;
+
+//	@OneToMany(mappedBy = "user")
+//	private List<Message> messages = new ArrayList<>();
+
 
 }
