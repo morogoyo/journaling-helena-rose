@@ -5,4 +5,6 @@ import com.helenarose.webServices.model.Users;
 public interface UserService {
 	
 	public Users userUpdate(Users user);
+
+	public String encryptPassword(String password);
 }

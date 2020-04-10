@@ -80,7 +80,10 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         HttpMethod.POST,
                         authenticationPath
-                )
+                ).antMatchers(HttpMethod.GET,"/api-docs/**")
+                .antMatchers(HttpMethod.GET,"/swagger-ui-custom.html")
+                .antMatchers(HttpMethod.GET,"/swagger-ui/**")
+                .antMatchers(HttpMethod.GET,"/actuator/**")
                 .antMatchers(HttpMethod.OPTIONS, "/**")
                 .and()
                 .ignoring()

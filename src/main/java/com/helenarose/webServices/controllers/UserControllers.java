@@ -3,6 +3,7 @@ package com.helenarose.webServices.controllers;
 
 import com.helenarose.webServices.model.Users;
 import com.helenarose.webServices.repository.UserRepository;
+import com.helenarose.webServices.serviceInterfaces.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class UserControllers {
 	
 	@Autowired
 	private UserRepository userRepo;
+
+	@Autowired
+	private UserService userService;
 	
 	@GetMapping(value = "/select-all")
 	public ResponseEntity<?> getAll() {		
@@ -46,6 +50,9 @@ public class UserControllers {
 	@PostMapping(value = "/insert", consumes = "application/json")
 	public ResponseEntity<?> insertUser(@NotNull @RequestBody Users user) {
 		LOG.info(user.toString());
+		user.getUserDTO().setPassword(userService.encryptPassword(user.getUserDTO().getPassword()));
+		user.getUserDTO().setEmail(user.getEmail());
+		LOG.info(user.getUserDTO().getEmail());
 		userRepo.save(user);
 
 		return new ResponseEntity<Users>(HttpStatus.OK) {
