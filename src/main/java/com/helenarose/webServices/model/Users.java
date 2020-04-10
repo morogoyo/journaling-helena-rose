@@ -2,24 +2,24 @@ package com.helenarose.webServices.model;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
-@Entity()
-public class Users {
+@Entity
+public class Users implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
 	
 	@Column(name = "fname")
@@ -27,9 +27,11 @@ public class Users {
 	
 	@Column(name = "lname")
 	private String lname;
-	
-	@Column(name = "email")
+
+
+	@Column(name = "email", unique = true)
 	private String email;
+
 
 	@CreationTimestamp
 	@Column(name = "createdDate")
@@ -58,8 +60,7 @@ public class Users {
 	@Column(name = "gender")
 	private String gender;
 
-//	@OneToMany(mappedBy = "user")
-//	private List<Message> messages = new ArrayList<>();
-
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private UserDTO userDTO;
 
 }

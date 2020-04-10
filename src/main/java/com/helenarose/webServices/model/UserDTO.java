@@ -1,12 +1,12 @@
 package com.helenarose.webServices.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.io.Serializable;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,21 +15,28 @@ import java.util.Collection;
 @ToString
 @EqualsAndHashCode
 @Entity
-public class UserDTO  {
+public class UserDTO  implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Column(name = "id")
-    Long id;
+    private Long id;
 
     @Column(name="username")
-    String userName;
+    private String userName;
 
     @Column(name ="password")
-    String password;
+    private String password;
 
     @Column
-    String role;
+    private String role;
+
+    @Column
+    private String email;
+
+    @OneToOne(mappedBy = "userDTO", cascade = CascadeType.ALL)
+    private Users user;
+
 
 
 }
