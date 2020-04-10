@@ -17,9 +17,8 @@ import java.util.Date;
 @Table(name = "message")
 public class Message {
 
-
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -34,7 +33,8 @@ public class Message {
     @UpdateTimestamp
     private Date modifiedDate;
 
-    @ManyToOne
-    @JoinColumn(name = "userId")
-    private  Users user;
+//    @ManyToOne
+//    @JoinColumn(name = "fk_user")
+//    private  Users user;
 }
+
