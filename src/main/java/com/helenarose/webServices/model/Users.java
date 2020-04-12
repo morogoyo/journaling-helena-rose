@@ -2,6 +2,7 @@ package com.helenarose.webServices.model;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -16,10 +17,10 @@ import java.util.Date;
 @ToString
 @Entity
 public class Users implements Serializable {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", updatable = false, nullable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private Long id;
 	
 	@Column(name = "fname")
@@ -29,7 +30,7 @@ public class Users implements Serializable {
 	private String lname;
 
 
-	@Column(name = "email", unique = true)
+	@Column(name = "email",unique = true)
 	private String email;
 
 

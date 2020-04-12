@@ -33,8 +33,8 @@ public class Message {
     @UpdateTimestamp
     private Date modifiedDate;
 
-//    @ManyToOne
-//    @JoinColumn(name = "fk_user")
-//    private  Users user;
+    @ManyToOne
+    @JoinColumn(name = "fk_user", referencedColumnName = "email")
+    private  Users user;
 }
 

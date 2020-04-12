@@ -1,9 +1,8 @@
 package com.helenarose.webServices.model;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,8 +16,7 @@ import java.io.Serializable;
 @Entity
 public class UserDTO  implements Serializable {
 
-    @Id
-    @GeneratedValue
+
     @Column(name = "id")
     private Long id;
 
@@ -28,10 +26,11 @@ public class UserDTO  implements Serializable {
     @Column(name ="password")
     private String password;
 
-    @Column
+    @Column(name ="role")
     private String role;
 
-    @Column
+    @Id
+    @Column(name ="email")
     private String email;
 
     @OneToOne(mappedBy = "userDTO", cascade = CascadeType.ALL)

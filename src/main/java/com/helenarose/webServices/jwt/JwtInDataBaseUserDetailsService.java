@@ -30,6 +30,7 @@ public class JwtInDataBaseUserDetailsService implements UserDetailsService {
         Optional<UserDTO> user = Optional.of(userDaoRepo.findByUserName(username));
         LOG.info("user Credentials username:{}" , user.get().getUserName() == null ? null : user.get().getUserName());
         LOG.info("user Credentials password:{}" , user.get().getPassword() == null ? null : user.get().getPassword());
+        LOG.info("user Credentials email:{}" , user.get().getEmail() == null ? null : user.get().getEmail());
 
 
         if (!user.isPresent()){
